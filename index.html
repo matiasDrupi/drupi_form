@@ -34,6 +34,14 @@
       font-weight: 600;
       color: #ededed;
     }
+	  
+	    header h2 {
+      margin: 0;
+      font-family: 'Switzer', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: #ededed;
+    }
 
     .container {
       background: #fff;
@@ -86,6 +94,7 @@
 <body>
   <header>
     <h1>Drupi</h1>
+	   <h2>Sticky</h2>
   </header>
 
   <div class="container">
@@ -163,11 +172,22 @@
 
       submitBtn.disabled = !allFilled;
     });
+	  
+	  
+	  
+	   // Obtener el contenido del h2
+  const h2Content = document.querySelector('header h2').textContent;
+	  
+
+	  
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
 
+			  // Agregar el contenido de h2 al formData
+  formData.append('h2', h2Content);
+		
       try {
         await fetch('https://hook.us2.make.com/p0bmy67fwppdcsmr6f2vmp4mlw15vhvo', {
           method: 'POST',
