@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drupi</title>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      background: #000;
+      width: 100%;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-family: 'Switzer', sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: #ededed;
+    }
+
+    .container {
+      background: #fff;
+      margin-top: 2rem;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 600px;
+    }
+
+    label {
+      display: block;
+      margin: 1rem 0 0.25rem;
+      font-weight: 500;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    input[type="file"] {
+      padding: 0.3rem;
+    }
+
+    button {
+      margin-top: 2rem;
+      padding: 1rem;
+      width: 100%;
+      background: #6200ea;
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Drupi</h1>
+  </header>
+
+  <div class="container">
+    <form id="drupiForm">
+      <label>Nombre del sitio web</label>
+      <input type="text" name="nombre_sitio_web" required />
+
+      <label>Perfil de Instagram</label>
+      <input type="text" name="instagram_perfil" required />
+
+      <label>Foto de perfil Instagram</label>
+      <input type="file" name="foto_perfil_instagram" accept="image/*" required />
+
+      <label>Usuario verificado en Instagram (Azul: verificado, Blanco: sin insignia, No: sin verificar)</label>
+      <select name="usuario_verificado_instagram" required>
+        <option value="">Seleccionar</option>
+        <option value="Azul">Azul</option>
+        <option value="Blanco">Blanco</option>
+        <option value="No">No</option>
+      </select>
+
+      <label>Título 1</label>
+      <input type="text" name="titulo1" required />
+
+      <label>Foto de perfil marca</label>
+      <input type="file" name="foto_perfil_marca" accept="image/*" required />
+
+      <label>Sticky foto marca</label>
+      <input type="file" name="sticky_foto_marca" accept="image/*" required />
+
+      <label>Video 1 (link)</label>
+      <input type="url" name="video_1" required />
+
+      <label>Video 2 (link)</label>
+      <input type="url" name="video_2" required />
+
+      <label>Video 3 (link)</label>
+      <input type="url" name="video_3" required />
+
+      <label>Video destacado 1 (link)</label>
+      <input type="url" name="video_destacado_1" required />
+
+      <label>Caption 1</label>
+      <input type="text" name="caption_1" required />
+
+      <label>Video destacado 2 (link)</label>
+      <input type="url" name="video_destacado_2" required />
+
+      <label>Caption 2</label>
+      <input type="text" name="caption_2" required />
+
+      <label>Captura web mobile</label>
+      <input type="file" name="captura_web_mobile" accept="image/*" required />
+
+      <button type="submit" id="submitBtn" disabled>Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('drupiForm');
+    const submitBtn = document.getElementById('submitBtn');
+
+
+    form.addEventListener('input', () => {
+      // Habilita el botón solo si todos los campos están llenos
+      const formData = new FormData(form);
+      let allFilled = true;
+
+      for (let [key, value] of formData.entries()) {
+        if (!value) {
+          allFilled = false;
+          break;
+        }
+      }
+
+      submitBtn.disabled = !allFilled;
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      try {
+        await fetch('https://hook.us2.make.com/p0bmy67fwppdcsmr6f2vmp4mlw15vhvo', {
+          method: 'POST',
+          body: formData
+        });
+
+        alert('Formulario enviado correctamente.');
+        form.reset();
+        submitBtn.disabled = true;
+      } catch (err) {
+        alert('Error al enviar. Intenta nuevamente.');
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
