@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drupi</title>
+    <title>Drupi_Formulario_Sticky</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -159,7 +159,6 @@
         const form = document.getElementById('drupiForm');
         const submitBtn = document.getElementById('submitBtn');
 
-
         form.addEventListener('input', () => {
             // Habilita el botón solo si todos los campos están llenos
             const formData = new FormData(form);
@@ -175,12 +174,8 @@
             submitBtn.disabled = !allFilled;
         });
 
-
-
         // Obtener el contenido del h2
         const h2Content = document.querySelector('header h2').textContent;
-
-
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -189,17 +184,39 @@
             // Agregar el contenido de h2 al formData
             formData.append('h2', h2Content);
 
+            // Crear un objeto para almacenar los datos a enviar
+            const dataToSend = {};
+            for (const [key, value] of formData.entries()) {
+                if (typeof value === 'string') {
+                    dataToSend[key] = value.replace(/\n/g, '\\n'); // Escapar saltos de línea
+                } else if (value instanceof File) {
+                    // Los archivos no se pueden serializar directamente a JSON
+                    // Make (Integromat) debería poder manejar FormData directamente en la solicitud
+                    // Por lo tanto, los dejamos como están en formData.
+                    // Si la API de Make requiere la URL del archivo, necesitarías un paso adicional
+                    // para cargar el archivo y obtener su URL.
+                } else {
+                    dataToSend[key] = value;
+                }
+            }
+
             try {
-                await fetch('https://hook.us2.make.com/p0bmy67fwppdcsmr6f2vmp4mlw15vhvo', {
+                const response = await fetch('https://hook.us2.make.com/p0bmy67fwppdcsmr6f2vmp4mlw15vhvo', {
                     method: 'POST',
-                    body: formData
+                    body: formData, // Enviamos FormData directamente
                 });
 
-                alert('Formulario enviado correctamente.');
-                form.reset();
-                submitBtn.disabled = true;
+                if (response.ok) {
+                    alert('Formulario enviado correctamente.');
+                    form.reset();
+                    submitBtn.disabled = true;
+                } else {
+                    const errorData = await response.json();
+                    console.error('Error al enviar el formulario:', errorData);
+                    alert('Error al enviar el formulario: ' + (errorData.message || 'Intenta nuevamente.'));
+                }
             } catch (err) {
-                alert('Error al enviar. Intenta nuevamente.');
+                alert('Error de red al enviar. Intenta nuevamente.');
                 console.error(err);
             }
         });
