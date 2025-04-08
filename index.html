@@ -10,6 +10,7 @@
     <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet">
 
     <style>
+        /* Estilos CSS - Mantenidos del formulario anterior */
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
@@ -45,7 +46,7 @@
         .container {
             background: #fff;
             margin-top: 2rem;
-            padding: 2rem;
+            padding: 1.5rem; /* Ajustado para coincidir con el formulario anterior */
             border-radius: 1rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             width: 90%; /* Ajustamos el ancho para centrar mejor */
@@ -57,29 +58,29 @@
 
         label {
             display: block;
-            margin: 1rem 0 0.5rem; /* Aumentamos un poco el margen inferior para más espacio */
+            margin: 1rem 0 0.5rem; /* Mantenido del formulario anterior */
             font-weight: 500;
         }
 
         input, select, textarea {
-            width: calc(100% - 10px); /* Reducimos el ancho para dejar espacio para el padding y el borde */
-            padding: 0.6rem; /* Aumentamos ligeramente el padding para compensar la reducción de tamaño */
+            width: calc(100% - 10px); /* Mantenido del formulario anterior */
+            padding: 0.6rem; /* Mantenido del formulario anterior */
             border-radius: 0.5rem;
             border: 1px solid #ccc;
-            font-size: 0.9rem; /* Reducimos el tamaño de la fuente */
+            font-size: 0.9rem; /* Mantenido del formulario anterior */
         }
 
         input[type="file"] {
-            padding: 0.4rem; /* Ajustamos el padding para el input de archivo */
+            padding: 0.6rem; /* Ajustado para coincidir con el padding general */
         }
 
         button {
-            margin-top: 2rem;
-            padding: 0.8rem; /* Reducimos un poco el padding vertical del botón */
+            margin-top: 1.5rem; /* Ajustado para coincidir con el formulario anterior */
+            padding: 0.8rem; /* Mantenido del formulario anterior */
             width: 100%;
             background: #6200ea;
             color: white;
-            font-size: 1rem; /* Reducimos ligeramente el tamaño de la fuente del botón */
+            font-size: 1rem; /* Mantenido del formulario anterior */
             border: none;
             border-radius: 0.5rem;
             cursor: pointer;
@@ -101,121 +102,128 @@
 
     <div class="container">
         <form id="drupiForm">
-            <label>Nombre del sitio web</label>
-            <input type="text" name="nombre_sitio_web" placeholder="drupi.io" required />
+            <label for="nombre_sitio_web">Nombre del sitio web</label>
+            <input type="text" id="nombre_sitio_web" name="nombre_sitio_web" placeholder="drupi.io" required />
 
-            <label>Perfil de Instagram</label>
-            <input type="text" name="instagram_perfil" placeholder="@nombreperfil" required />
+            <label for="instagram_perfil">Perfil de Instagram</label>
+            <input type="text" id="instagram_perfil" name="instagram_perfil" placeholder="@nombreperfil" required />
 
-            <label>Foto de perfil Instagram</label>
-            <input type="file" name="foto_perfil_instagram" accept="image/*" placeholder="Subí la foto de perfíl" required />
+            <label for="foto_perfil_instagram">Foto de perfil Instagram</label>
+            <input type="file" id="foto_perfil_instagram" name="foto_perfil_instagram" accept="image/*" placeholder="Subí la foto de perfíl" required />
 
-            <label>Usuario verificado en Instagram</label>
-            <select name="usuario_verificado_instagram" placeholder="¿Es usuario verificado? ¿Color de insignia?" required>
+            <label for="usuario_verificado_instagram">Usuario verificado en Instagram</label>
+            <select id="usuario_verificado_instagram" name="usuario_verificado_instagram" placeholder="¿Es usuario verificado? ¿Color de insignia?" required>
                 <option value="">Seleccionar</option>
                 <option value="Azul">Azul</option>
                 <option value="Blanco">Blanco</option>
                 <option value="No">No</option>
             </select>
 
-            <label>Título 1</label>
-            <input type="text" name="titulo1" placeholder="Escribí un título" required />
+            <label for="titulo1">Título 1</label>
+            <input type="text" id="titulo1" name="titulo1" placeholder="Escribí un título" required />
 
-            <label>Foto de perfil marca</label>
-            <input type="file" name="foto_perfil_marca" accept="image/*" placeholder="Subí la foto de perfíl de la marca" required />
+            <label for="foto_perfil_marca">Foto de perfil marca</label>
+            <input type="file" id="foto_perfil_marca" name="foto_perfil_marca" accept="image/*" placeholder="Subí la foto de perfíl de la marca" required />
 
-            <label>Sticky foto marca</label>
-            <input type="file" name="sticky_foto_marca" accept="image/*" placeholder="Subí la foto de la segunda marca" required />
+            <label for="sticky_foto_marca">Sticky foto marca</label>
+            <input type="file" id="sticky_foto_marca" name="sticky_foto_marca" accept="image/*" placeholder="Subí la foto de la segunda marca" required />
 
-            <label>Video 1 (link)</label>
-            <input type="url" name="video_1" placeholder="https://www.instagram.com/..." required />
+            <label for="video_1">Video 1 (link)</label>
+            <input type="url" id="video_1" name="video_1" placeholder="https://www.instagram.com/..." required />
 
-            <label>Video 2 (link)</label>
-            <input type="url" name="video_2" placeholder="https://www.instagram.com/..." required />
+            <label for="video_2">Video 2 (link)</label>
+            <input type="url" id="video_2" name="video_2" placeholder="https://www.instagram.com/..." required />
 
-            <label>Video 3 (link)</label>
-            <input type="url" name="video_3" placeholder="https://www.instagram.com/..." required />
+            <label for="video_3">Video 3 (link)</label>
+            <input type="url" id="video_3" name="video_3" placeholder="https://www.instagram.com/..." required />
 
-            <label>Video destacado 1 (link)</label>
-            <input type="url" name="video_destacado_1" placeholder="https://www.instagram.com/..." required />
+            <label for="video_destacado_1">Video destacado 1 (link)</label>
+            <input type="url" id="video_destacado_1" name="video_destacado_1" placeholder="https://www.instagram.com/..." required />
 
-            <label>Caption 1</label>
-            <input type="text" name="caption_1" placeholder="Escribí una frase para tu video destacado." required />
+            <label for="caption_1">Caption 1</label>
+            <input type="text" id="caption_1" name="caption_1" placeholder="Escribí una frase para tu video destacado." required />
 
-            <label>Video destacado 2 (link)</label>
-            <input type="url" name="video_destacado_2" placeholder="https://www.instagram.com/..." required />
+            <label for="video_destacado_2">Video destacado 2 (link)</label>
+            <input type="url" id="video_destacado_2" name="video_destacado_2" placeholder="https://www.instagram.com/..." required />
 
-            <label>Caption 2</label>
-            <input type="text" name="caption_2" placeholder="Escribí una frase para tu video destacado." required />
+            <label for="caption_2">Caption 2</label>
+            <input type="text" id="caption_2" name="caption_2" placeholder="Escribí una frase para tu video destacado." required />
 
-            <label>Captura web mobile</label>
-            <input type="file" name="captura_web_mobile" accept="image/*" placeholder="Subí la foto de la captura vertical del sitio web" required />
+            <label for="captura_web_mobile">Captura web mobile</label>
+            <input type="file" id="captura_web_mobile" name="captura_web_mobile" accept="image/*" placeholder="Subí la foto de la captura vertical del sitio web" required />
+
+            <label for="telegram_user">Usuario de Telegram</label>
+            <input type="text" id="telegram_user" name="telegram_user" placeholder="Tu usuario de Telegram">
 
             <button type="submit" id="submitBtn" disabled>Enviar</button>
         </form>
     </div>
 
     <script>
+        // Obtiene referencias al formulario y al botón de envío
         const form = document.getElementById('drupiForm');
         const submitBtn = document.getElementById('submitBtn');
 
-        form.addEventListener('input', () => {
-            // Habilita el botón solo si todos los campos están llenos
-            const formData = new FormData(form);
-            let allFilled = true;
-
-            for (let [key, value] of formData.entries()) {
-                if (!value) {
-                    allFilled = false;
-                    break;
+        // Función para verificar si todos los campos requeridos están llenos
+        function areAllRequiredFilled() {
+            // Obtiene todos los elementos del formulario que tienen el atributo 'required'
+            const requiredFields = form.querySelectorAll('[required]');
+            // Itera sobre cada campo requerido y verifica si su valor no está vacío
+            // Para los inputs de tipo 'file', verifica si se ha seleccionado al menos un archivo
+            return Array.from(requiredFields).every(input => {
+                if (input.type === 'file') {
+                    return input.files.length > 0;
+                } else {
+                    return input.value.trim() !== '';
                 }
-            }
+            });
+        }
 
-            submitBtn.disabled = !allFilled;
-        });
+        // Función para habilitar o deshabilitar el botón de envío
+        function toggleSubmitButton() {
+            submitBtn.disabled = !areAllRequiredFilled();
+        }
+
+        // Agrega un listener al evento 'input' del formulario
+        // Cada vez que cambia el valor de un input, se verifica si todos los campos requeridos están llenos
+        form.addEventListener('input', toggleSubmitButton);
+
+        // Llama a la función para establecer el estado inicial del botón al cargar la página
+        toggleSubmitButton();
 
         // Obtener el contenido del h2
         const h2Content = document.querySelector('header h2').textContent;
 
+        // Agrega un listener al evento 'submit' del formulario
         form.addEventListener('submit', async (e) => {
+            // Evita el envío tradicional del formulario
             e.preventDefault();
+            // Crea un objeto FormData para enviar los datos del formulario (incluidos los archivos)
             const formData = new FormData(form);
 
-            // Agregar el contenido de h2 al formData
+            // Agrega el contenido de h2 al formData
             formData.append('h2', h2Content);
 
-            // Crear un objeto para almacenar los datos a enviar
-            const dataToSend = {};
-            for (const [key, value] of formData.entries()) {
-                if (typeof value === 'string') {
-                    dataToSend[key] = value.replace(/\n/g, '\\n'); // Escapar saltos de línea
-                } else if (value instanceof File) {
-                    // Los archivos no se pueden serializar directamente a JSON
-                    // Make (Integromat) debería poder manejar FormData directamente en la solicitud
-                    // Por lo tanto, los dejamos como están en formData.
-                    // Si la API de Make requiere la URL del archivo, necesitarías un paso adicional
-                    // para cargar el archivo y obtener su URL.
-                } else {
-                    dataToSend[key] = value;
-                }
-            }
-
             try {
+                // Realiza una petición POST asíncrona a la URL del webhook
                 const response = await fetch('https://hook.us2.make.com/p0bmy67fwppdcsmr6f2vmp4mlw15vhvo', {
                     method: 'POST',
-                    body: formData, // Enviamos FormData directamente
+                    body: formData, // Envía el objeto FormData directamente (soporta archivos)
                 });
 
+                // Si la respuesta del servidor es exitosa
                 if (response.ok) {
                     alert('Formulario enviado correctamente.');
-                    form.reset();
-                    submitBtn.disabled = true;
+                    form.reset(); // Restablece el formulario
+                    toggleSubmitButton(); // Deshabilita el botón después del envío
                 } else {
+                    // Si hubo un error en la respuesta del servidor
                     const errorData = await response.json();
                     console.error('Error al enviar el formulario:', errorData);
                     alert('Error al enviar el formulario: ' + (errorData.message || 'Intenta nuevamente.'));
                 }
             } catch (err) {
+                // Si ocurre un error de red
                 alert('Error de red al enviar. Intenta nuevamente.');
                 console.error(err);
             }
