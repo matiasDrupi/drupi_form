@@ -56,6 +56,33 @@
             align-items: stretch; /* Estiramos los elementos internos para que ocupen el ancho del contenedor */
         }
 
+        .chat-id-container {
+            background: #fff; /* Mismo fondo que el contenedor principal para integrarlo mejor */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem; /* Separación del resto del formulario */
+            text-align: left; /* Alinea la etiqueta a la izquierda */
+        }
+        .chat-id-input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-id-input-group label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .chat-id-input-group input {
+            padding: 0.7rem;
+            border: 1px solid #aaa;
+            border-radius: 0.3rem;
+            font-size: 1rem;
+        }
+        .separator {
+            border-bottom: 1px solid #ccc;
+            margin: 1.5rem 0;
+        }
+
         label {
             display: block;
             margin: 1rem 0 0.5rem; /* Mantenido del formulario anterior */
@@ -101,6 +128,14 @@
     </header>
 
     <div class="container">
+        <div class="chat-id-container">
+            <div class="chat-id-input-group">
+                <label for="chat_id">Tu Chat ID de Telegram</label>
+                <input type="text" id="chat_id" name="chat_id" placeholder="Ingresa tu Chat ID" required />
+            </div>
+        </div>
+        <div class="separator"></div>
+
         <form id="drupiForm">
             <label for="nombre_sitio_web">Nombre del sitio web</label>
             <input type="text" id="nombre_sitio_web" name="nombre_sitio_web" placeholder="drupi.io" required />
@@ -151,9 +186,6 @@
 
             <label for="captura_web_mobile">Captura web mobile</label>
             <input type="file" id="captura_web_mobile" name="captura_web_mobile" accept="image/*" placeholder="Subí la foto de la captura vertical del sitio web" required />
-
-            <label for="telegram_user">Usuario de Telegram</label>
-            <input type="text" id="telegram_user" name="telegram_user" placeholder="Tu usuario de Telegram">
 
             <button type="submit" id="submitBtn" disabled>Enviar</button>
         </form>
