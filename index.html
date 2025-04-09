@@ -195,6 +195,7 @@
         // Obtiene referencias al formulario y al botón de envío
         const form = document.getElementById('drupiForm');
         const submitBtn = document.getElementById('submitBtn');
+        const chatIdInput = document.getElementById('chat_id'); // Referencia al input del chat ID
 
         // Función para verificar si todos los campos requeridos están llenos
         function areAllRequiredFilled() {
@@ -233,12 +234,15 @@
             // Crea un objeto FormData para enviar los datos del formulario (incluidos los archivos)
             const formData = new FormData(form);
 
+            // **AGREGANDO EL CHAT ID AL FORMDATA**
+            formData.append('chat_id', chatIdInput.value.trim());
+
             // Agrega el contenido de h2 al formData
             formData.append('h2', h2Content);
 
             try {
                 // Realiza una petición POST asíncrona a la URL del webhook
-                const response = await fetch('https://hook.us2.make.com/p0bmy67fwppdcsmr6f2vmp4mlw15vhvo', {
+                const response = await fetch('https://hook.us2.make.com/8uoerl02jlpk5jwda2vcyciir97asqs8', {
                     method: 'POST',
                     body: formData, // Envía el objeto FormData directamente (soporta archivos)
                 });
