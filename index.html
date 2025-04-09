@@ -198,6 +198,17 @@
         const chatIdInput = document.getElementById('chat_id'); // Referencia al input del chat ID
         const videoInputs = document.querySelectorAll('input[type="url"]'); // Selecciona todos los inputs de tipo URL
 
+        // Función para validar si la URL es de Instagram
+        function isValidInstagramUrl(url) {
+            const regex = /^https:\/\/(www\.)?instagram\.com\/.+$/;
+            return regex.test(url);
+        }
+
+        // Función para formatear la URL al formato requerido por Apify (actualmente solo asegura https)
+        function formatUrl(url) {
+            return url.startsWith('https://') ? url : `https://${url}`;
+        }
+
         // Función para verificar si todos los campos requeridos están llenos
         function areAllRequiredFilled() {
             // Obtiene todos los elementos del formulario que tienen el atributo 'required'
@@ -207,6 +218,8 @@
             return Array.from(requiredFields).every(input => {
                 if (input.type === 'file') {
                     return input.files.length > 0;
+                } else if (input.type === 'url') {
+                    return isValidInstagramUrl(input.value.trim()); // Valida URLs de Instagram
                 } else {
                     return input.value.trim() !== '';
                 }
@@ -242,11 +255,8 @@
             const directUrls = [];
             videoInputs.forEach(input => {
                 if (input.name.startsWith('video') && input.value.trim()) {
-                    let url = input.value.trim();
-                    if (!url.startsWith('https://')) {
-                        url = `https://${url}`;
-                    }
-                    directUrls.push(url);
+                    const formattedUrl = formatUrl(input.value.trim());
+                    directUrls.push(formattedUrl);
                 }
             });
             formData.append('directUrls', JSON.stringify(directUrls)); // Apify espera un array de URLs
